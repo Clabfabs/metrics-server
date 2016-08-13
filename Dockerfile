@@ -1,10 +1,10 @@
 FROM node:slim
 
-MAINTAINER Eugene Obrezkov <ghaiklor@gmail.com>
+ADD . /metrics-server
+RUN cd /metrics-server; npm install
 
-RUN mkdir /app
-VOLUME ["/app"]
-WORKDIR /app
+WORKDIR /metrics-server
+
 EXPOSE 3000
 
-CMD npm start
+CMD ["npm", "start"]

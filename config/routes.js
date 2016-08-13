@@ -7,5 +7,11 @@
  */
 
 module.exports = {
-  routes: {}
+  routes: {
+
+    'GET /metrics': 'ClickController.metrics',
+    'GET /getMultiplier': 'ClickController.getMultiplier',
+    'PUT /setMultiplier': 'ClickController.setMultiplier'
+
+  }
 };

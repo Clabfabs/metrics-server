@@ -11,6 +11,10 @@ module.exports = {
   attributes: {
     // Fill your attributes here
 
+    origin: {
+      type: 'string'
+    },
+
     toJSON() {
       return this.toObject();
     }

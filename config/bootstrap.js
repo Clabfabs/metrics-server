@@ -7,5 +7,8 @@
  */
 
 module.exports = {
-  bootstrap: cb => cb()
+  bootstrap: function (cb) {
+    sails.config.CLICK_MULTIPLIER = process.env.CLICK_MULTIPLIER || '5000';
+    cb();
+  }
 };
