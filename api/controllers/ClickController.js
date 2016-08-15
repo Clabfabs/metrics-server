@@ -36,8 +36,9 @@ module.exports = {
         });
         var result = description;
         _.forEach(counts, function(count) {
-          result += 'click_count{origin=' + count.origin + '} ' + count.count + '\n'
+          result += 'click_count{origin=\"' + count.origin + '\"} ' + count.count + '\n'
         });
+        res.set('Content-Type', 'text/plain');
         res.send(result);
       })
       .catch(function(err) {
