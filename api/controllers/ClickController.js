@@ -14,6 +14,11 @@ var cost_amazonec2_eu_tier2 = '0.5';
 
 var HIGH = false;
 
+var mandatoryOrigins = [
+  'eu',
+  'us'
+];
+
 var costs = '# HELP cost_amazonec2_us_tier1 Hourly cost for a AWS, US and tier 1 machine.\n' +
   '# TYPE cost_amazonec2_us_tier1 gauge\n' +
   'cost_amazonec2_us_tier1 %COST1%\n' +
@@ -55,6 +60,7 @@ var costs = '# HELP cost_amazonec2_us_tier1 Hourly cost for a AWS, US and tier 1
 module.exports = {
 
   metrics: function (req, res) {
+    // Prepare click metrics
     Click.find()
       .then(function (clicks) {
         var grouped = _.groupBy(clicks, function (click) {
@@ -64,10 +70,21 @@ module.exports = {
         var counts = _.map(grouped, function (value, key) {
           return {origin: key, count: value.length * multiplier};
         });
+
+        // Check that mandatory origins are always set to at least 0
+        _.forEach(mandatoryOrigins, function (orig) {
+          if (!_.some(counts, {origin: orig})) {
+            counts.push({origin: orig, count: 0})
+          }
+        });
+
+        // Serve cost metrics
         var result = costs.replace('%COST1%', cost_amazonec2_us_tier1)
-                          .replace('%COST2%', cost_amazonec2_us_tier2)
-                          .replace('%COST3%', cost_amazonec2_eu_tier1)
-                          .replace('%COST4%', cost_amazonec2_eu_tier2);
+          .replace('%COST2%', cost_amazonec2_us_tier2)
+          .replace('%COST3%', cost_amazonec2_eu_tier1)
+          .replace('%COST4%', cost_amazonec2_eu_tier2);
+
+        // Serve click metrics
         _.forEach(counts, function (count) {
           result += '# HELP click_count_' + count.origin + ' The total number of clicks from ' + count.origin + '.\n# TYPE click_count_' + count.origin + ' counter\n';
           result += 'click_count_' + count.origin + ' ' + count.count + '\n';
