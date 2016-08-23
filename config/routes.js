@@ -11,7 +11,9 @@ module.exports = {
 
     'GET /metrics': 'ClickController.metrics',
     'GET /getMultiplier': 'ClickController.getMultiplier',
-    'PUT /setMultiplier': 'ClickController.setMultiplier'
+    'PUT /setMultiplier': 'ClickController.setMultiplier',
+    'PUT /setHighCosts': 'ClickController.setHighCosts',
+    'PUT /setLowCosts': 'ClickController.setLowCosts'
 
   }
 };
