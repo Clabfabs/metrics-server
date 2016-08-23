@@ -34,9 +34,10 @@ module.exports = {
         var counts = _.map(grouped, function(value, key) {
           return {origin: key, count: value.length * multiplier};
         });
-        var result = description;
+        var result = '';
         _.forEach(counts, function(count) {
-          result += 'click_count_' + count.origin + ' ' + count.count + '\n'
+          result += '# HELP click_count_' + count.origin + ' The total number of clicks from ' + count.origin + '.\n# TYPE click_count_' + count.origin + ' counter\n';
+          result += 'click_count_' + count.origin + ' ' + count.count + '\n';
         });
         res.set('Content-Type', 'text/plain');
         res.send(result);
