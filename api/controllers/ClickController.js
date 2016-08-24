@@ -42,7 +42,7 @@ var costs = '# HELP cost_amazonec2_us_tier1 Hourly cost for a AWS, US and tier 1
   'cost_digitalocean_us_tier1 0.01\n' +
   '# HELP cost_digitalocean_us_tier2 Hourly cost for a DO, US and tier 2 machine.\n' +
   '# TYPE cost_digitalocean_us_tier2 gauge\n' +
-  'cost_digitalocean_us_tier2 0.02\n' +
+  'cost_digitalocean_us_tier2 0.01\n' +
   '# HELP cost_digitalocean_us_tier3 Hourly cost for a DO, US and tier 3 machine.\n' +
   '# TYPE cost_digitalocean_us_tier3 gauge\n' +
   'cost_digitalocean_us_tier3 0.04\n' +
@@ -51,7 +51,7 @@ var costs = '# HELP cost_amazonec2_us_tier1 Hourly cost for a AWS, US and tier 1
   'cost_digitalocean_eu_tier1 0.01\n' +
   '# HELP cost_digitalocean_eu_tier2 Hourly cost for a DO, EU and tier 2 machine.\n' +
   '# TYPE cost_digitalocean_eu_tier2 gauge\n' +
-  'cost_digitalocean_eu_tier2 0.02\n' +
+  'cost_digitalocean_eu_tier2 0.01\n' +
   '# HELP cost_digitalocean_eu_tier3 Hourly cost for a DO, EU and tier 3 machine.\n' +
   '# TYPE cost_digitalocean_eu_tier3 gauge\n' +
   'cost_digitalocean_eu_tier3 0.04\n';
