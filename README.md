@@ -1,4 +1,6 @@
-# metrics-server
+# GLAPP Metrics Server
+
+A lightweight GLAPP infrastructure component that collects and serves custom metrics.
 
 ## Installation
 
